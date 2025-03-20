@@ -2,5 +2,7 @@
 __pycache__/
 *.pyc
 *.log
-images/
+images/*.MP4
+images/*.mov
+images/*.mp4
 !web/ 
