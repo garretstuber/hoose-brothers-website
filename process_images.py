@@ -96,6 +96,21 @@ def main():
         process_image(source_path, gallery_path, (1200, 800))
         process_image(source_path, thumbnail_path, (400, 300))
         print(f"Processed: {img_file}")
+    
+    # Create thumbnail for video
+    video_file = "PXL_20210731_195819452.mp4"
+    video_path = os.path.join(source_dir, video_file)
+    thumbnail_path = "web/thumbnails/PXL_20210731_195819452.jpg"
+    
+    if os.path.exists(video_path):
+        try:
+            clip = mp.VideoFileClip(video_path)
+            # Get frame at 1 second
+            clip.save_frame(thumbnail_path, t=1)
+            clip.close()
+            print(f"Created thumbnail for: {video_file}")
+        except Exception as e:
+            print(f"Error creating thumbnail for {video_file}: {e}")
 
     print("Image processing complete!")
 
